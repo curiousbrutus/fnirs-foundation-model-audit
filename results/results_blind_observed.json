@@ -1,0 +1,155 @@
+{
+ "session_a": {
+  "A_cp_x0.5": {
+   "n": 80,
+   "med_dur": 12.0,
+   "ioi_frac": 0.101,
+   "gaps": 5,
+   "match": 0.633
+  },
+  "A_cp_x1": {
+   "n": 74,
+   "med_dur": 13.0,
+   "ioi_frac": 0.178,
+   "gaps": 6,
+   "match": 0.733
+  },
+  "A_cp_x2": {
+   "n": 16,
+   "med_dur": 13.0,
+   "ioi_frac": 0.2,
+   "gaps": 1,
+   "match": 0.1
+  },
+  "A_cp_x4": {
+   "n": 8,
+   "med_dur": 16.0,
+   "ioi_frac": 0.143,
+   "gaps": 1,
+   "match": 0.067
+  },
+  "B_hmm": {
+   "n": 9,
+   "med_dur": 17.0,
+   "ioi_frac": 0.0,
+   "gaps": 1,
+   "match": 0.067
+  },
+  "C_var_z2": {
+   "n": 10,
+   "med_dur": 3.0,
+   "ioi_frac": 0.0,
+   "gaps": 0,
+   "match": 0.133
+  },
+  "C_var_z3": {
+   "n": 4,
+   "med_dur": 4.5,
+   "ioi_frac": 0.0,
+   "gaps": 0,
+   "match": 0.067
+  }
+ },
+ "session_b": {
+  "A_cp_x0.5": {
+   "n": 80,
+   "med_dur": 10.0,
+   "ioi_frac": 0.038,
+   "gaps": 3,
+   "match": 0.533
+  },
+  "A_cp_x1": {
+   "n": 80,
+   "med_dur": 10.0,
+   "ioi_frac": 0.089,
+   "gaps": 5,
+   "match": 0.6
+  },
+  "A_cp_x2": {
+   "n": 53,
+   "med_dur": 13.0,
+   "ioi_frac": 0.173,
+   "gaps": 5,
+   "match": 0.333
+  },
+  "A_cp_x4": {
+   "n": 7,
+   "med_dur": 12.0,
+   "ioi_frac": 0.167,
+   "gaps": 2,
+   "match": 0.0
+  },
+  "B_hmm": {
+   "n": 28,
+   "med_dur": 17.5,
+   "ioi_frac": 0.148,
+   "gaps": 6,
+   "match": 0.267
+  },
+  "C_var_z2": {
+   "n": 12,
+   "med_dur": 4.5,
+   "ioi_frac": 0.091,
+   "gaps": 2,
+   "match": 0.133
+  },
+  "C_var_z3": {
+   "n": 5,
+   "med_dur": 6.0,
+   "ioi_frac": 0.0,
+   "gaps": 0,
+   "match": 0.033
+  }
+ },
+ "pilot": {
+  "A_cp_x0.5": {
+   "n": 80,
+   "med_dur": 9.0,
+   "ioi_frac": 0.025,
+   "gaps": 2,
+   "match": 0.567
+  },
+  "A_cp_x1": {
+   "n": 80,
+   "med_dur": 11.0,
+   "ioi_frac": 0.089,
+   "gaps": 5,
+   "match": 0.633
+  },
+  "A_cp_x2": {
+   "n": 21,
+   "med_dur": 14.0,
+   "ioi_frac": 0.2,
+   "gaps": 4,
+   "match": 0.2
+  },
+  "A_cp_x4": {
+   "n": 6,
+   "med_dur": 19.0,
+   "ioi_frac": 0.2,
+   "gaps": 1,
+   "match": 0.033
+  },
+  "B_hmm": {
+   "n": 21,
+   "med_dur": 12.0,
+   "ioi_frac": 0.25,
+   "gaps": 5,
+   "match": 0.233
+  },
+  "C_var_z2": {
+   "n": 9,
+   "med_dur": 5.0,
+   "ioi_frac": 0.0,
+   "gaps": 1,
+   "match": 0.133
+  },
+  "C_var_z3": {
+   "n": 2,
+   "med_dur": 8.0,
+   "ioi_frac": 1.0,
+   "gaps": 1,
+   "match": 0.0
+  }
+ }
+}

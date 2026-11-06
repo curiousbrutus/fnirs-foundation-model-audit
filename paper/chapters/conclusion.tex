@@ -1,0 +1,57 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We audited a released fNIRS foundation model on a clean held-out dataset. The pretrained
+encoder reached $0.469 \pm 0.095$ three-class accuracy against chance $0.333$, but a randomly
+initialised encoder of the same architecture reached $0.448 \pm 0.010$ over ten seeds---a
+$2.0$~pp difference that is not statistically significant. The architecture itself did
+significantly outperform hand-crafted features, and that advantage disappeared once
+short-separation channels were regressed out, at a cost of $4.5$~pp. Naive concatenation of
+representations significantly degraded performance.
+
+The methodological conclusion is modest and, we think, portable: fNIRS foundation-model claims
+should be reported against a random-encoder baseline, with contamination accounting and with
+preprocessing sensitivity. The empirical conclusion is deliberately narrow: on this dataset and
+task, the pretraining advantage of a fNIRS foundation model is not established.
+
+Three extensions follow naturally. First, replicate across datasets and paradigms, including a
+visual or affective domain the model's authors never tested. Second, fine-tune rather than
+probe, and evaluate under the same controls. Third, replace naive concatenation with learned
+fusion, and test whether it beats the better single representation. We release the harness, the
+frozen protocol and a detectability calculator so that all three can be attempted without
+rebuilding the infrastructure.
+
+\section*{Data and code availability}
+\label{sec:availability}
+All analysis code, the frozen evaluation protocol, per-fold results and figure-generation scripts
+are available at \url{https://github.com/curiousbrutus/fnirs-foundation-model-audit} and archived
+on Zenodo (DOI to be added on acceptance). The auditory dataset analysed in
+\S\ref{sec:results} is publicly available from its original authors \citep{luke2021passive}.
+
+The trigger-free pilot recordings used only to illustrate the detectability calculator
+(\S\ref{sec:results_tool}) are \emph{not} released. They are informal, self-collected exploratory
+recordings made by the author, obtained without a formal ethics protocol or research consent, and
+they are reported exclusively as aggregate statistics under neutral session codes.
+
+\section*{Ethics statement}
+This study re-analyses previously collected, publicly available, de-identified data; no new human
+participants were involved and no new ethical approval was required.
+
+\section*{Author contributions}
+E.G. conceived the study, performed the analysis and wrote the manuscript.
+\texttt{[TODO: add co-authors and CRediT roles before submission.]}
+
+\section*{Use of AI tools}
+Generative AI tools were used in the preparation of this work: a coding assistant was used to
+implement, debug and test the analysis pipeline, and a language model was used to draft and edit
+prose. The research question, the pre-registered evaluation protocol, the statistical choices and
+all interpretations are the author's. Every number reported here was recomputed by the author
+from the released code and result files, and the author takes full responsibility for the content
+of the manuscript.
+
+\section*{Acknowledgment}
+The author thanks Zenghui Wang (Southeast University, Nanjing, China) for generously sharing his
+pretrained fNIRS models and code, and for his body of work on fNIRS classification architectures
+\citep{wang2022vision,wang2022transformer,wang2023rethinking,wang2026unified,wang2026dkssm};
+the authors of \citet{luke2021passive} for releasing their data; and the MtReNIRS authors for
+releasing model weights under a permissive licence, which made an independent audit possible.

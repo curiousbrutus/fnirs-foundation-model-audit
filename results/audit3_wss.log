@@ -1,0 +1,31 @@
+
+======================================================================
+VARIANT: wss
+  signal (1020, 50, 100), 17 subjects
+  pretrained             0.4235 +/- 0.0548  (non-converged 0/17)
+  classical              0.4049 +/- 0.0582  (non-converged 0/17)
+  random_seed0           0.4157 +/- 0.0670  (non-converged 0/17)
+  random_seed1           0.4078 +/- 0.0629  (non-converged 0/17)
+  random_seed2           0.4304 +/- 0.0705  (non-converged 0/17)
+  random_seed3           0.4304 +/- 0.0581  (non-converged 0/17)
+  random_seed4           0.4225 +/- 0.0681  (non-converged 0/17)
+  random_seed5           0.4196 +/- 0.0657  (non-converged 0/17)
+  random_seed6           0.4118 +/- 0.0631  (non-converged 0/17)
+  random_seed7           0.4157 +/- 0.0673  (non-converged 0/17)
+  random_seed8           0.4265 +/- 0.0664  (non-converged 0/17)
+  random_seed9           0.4118 +/- 0.0542  (non-converged 0/17)
+  seed distribution: 0.4192 +/- 0.0076 [0.4078,0.4304]
+  paired tests:
+  pretrained - mean(10 seeds)           +0.43 pp  p=0.7116  wilcoxon=0.8900  CI=[-1.67,+2.63]
+  pretrained - classical                +1.86 pp  p=0.2965  wilcoxon=0.1697  CI=[-1.57,+5.00]
+  mean(10 seeds) - classical            +1.43 pp  p=0.3006  wilcoxon=0.3289  CI=[-1.14,+3.93]
+
+======================================================================
+CROSS-VARIANT (same folds, same labels)
+Traceback (most recent call last):
+  File "/home/jobbe/Research/fNIRS-Autoencoder/audit/run_audit3.py", line 180, in <module>
+    main()
+  File "/home/jobbe/Research/fNIRS-Autoencoder/audit/run_audit3.py", line 172, in main
+    paired(arm_accs[a_name][arm], arm_accs[b_name][arm],
+           ~~~~~~~~^^^^^^^^
+KeyError: 'raw'

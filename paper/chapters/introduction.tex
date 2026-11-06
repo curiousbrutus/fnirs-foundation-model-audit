@@ -1,0 +1,57 @@
+\section{Introduction}
+\label{sec:intro}
+
+Functional near-infrared spectroscopy (fNIRS) measures cortical haemodynamics through the scalp
+at a fraction of the cost and immobility of fMRI, and has become a practical modality for
+brain--computer interfaces and neuroergonomics. Its decoding performance, however, has
+historically been limited: sparse montages, superficial physiological contamination and modest
+spatial specificity constrain single-trial accuracy \citep{fischer2026density}.
+
+Foundation models are now being proposed as the remedy. In late 2026, two fNIRS foundation
+models appeared within weeks of each other---MtReNIRS \citep{chae2026mtrenirs} and GeoNIRS
+\citep{geonirs2026}---alongside a curated 67-dataset corpus of 1{,}955 hours
+\citep{sposso2026corpus}. MtReNIRS reports leave-one-subject-out gains over a from-scratch copy
+of the same network, and over feature-engineered baselines, on several public datasets.
+
+These are promising results, but they share a structural weakness: every published number comes
+from the model's own authors, on datasets most of which are part of the model's pretraining
+corpus. Other neuroimaging modalities have already confronted this. EEG now has independent
+benchmark efforts spanning dozens of models and tasks; fNIRS has no equivalent, and we are not
+aware of any published third-party evaluation of a released fNIRS foundation model. This matters
+because recent large-scale work in the neighbouring EEG literature has found that pretraining
+advantages can be small, inconsistent across tasks, or absent relative to compact
+convolutional baselines.
+
+This paper reports such an evaluation. We audit MtReNIRS on a dataset that is verifiably absent
+from its pretraining corpus, using a protocol fixed in advance: strict leave-one-subject-out
+cross-validation, identical folds for every arm, matched feature dimensionality, permutation
+nulls, and paired statistical tests across folds. Our central question is deliberately blunt:
+\emph{does the pretrained encoder beat a randomly initialised encoder of the same architecture?}
+The random-encoder control is routine in vision and language, where it separates the
+contribution of pretraining from the contribution of architecture; in fNIRS foundation-model
+papers it is, to our knowledge, not used at all.
+
+Our contributions are:
+\begin{enumerate}
+  \item An independent, contamination-aware evaluation of a released fNIRS foundation model on a
+        clean held-out dataset, with permutation-calibrated significance and paired tests.
+  \item A ten-seed random-initialisation control, which shows that the pretraining advantage is
+        $+2.0$ pp and not statistically significant, while the architecture's advantage over
+        hand-crafted features is significant.
+  \item A short-separation ablation showing that the currently recommended physiological
+        regression \emph{reduces} decoding accuracy by roughly $4.5$ pp on this paradigm and
+        eliminates the architecture advantage---evidence that part of the decodable signal is
+        systemic rather than cortical.
+  \item A negative result for naive feature-bank stacking, and a statistical demonstration that
+        the feature combination must be learned rather than concatenated.
+  \item A companion detectability calculator, derived while diagnosing a trigger-free in-house
+        dataset, which quantifies the smallest evoked response a given montage and design could
+        detect. We include it because it is the tool we used to establish that our own data
+        could not support the analysis we had planned---a check we believe should precede
+        decoding claims in this literature.
+\end{enumerate}
+
+We emphasise at the outset what this paper does \emph{not} claim. It is not evidence that
+fNIRS foundation models are useless, nor that pretraining cannot help. It is a single-dataset,
+single-model audit with limited statistical power, and its result is a failure to establish an
+advantage, not a demonstration of its absence.

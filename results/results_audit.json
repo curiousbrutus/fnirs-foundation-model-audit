@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "n_epochs": 1020,
+    "n_subjects": 17,
+    "n_channels": 66,
+    "classes": [
+      340,
+      340,
+      340
+    ],
+    "params": 1226368,
+    "chance": 0.3333333333333333,
+    "dataset": "Luke2021 passive auditory (clean, not in MtReNIRS pretraining)",
+    "runtime_s": 496.3
+  },
+  "mtreNIRS_flatten": {
+    "acc": 0.46960784313725484,
+    "sd": 0.09449475105899206,
+    "dims": 8448,
+    "null_mean": 0.3320392156862746,
+    "null_p95": 0.36387254901960786,
+    "p_value": 0.0
+  },
+  "mtreNIRS_tmean": {
+    "acc": 0.46960784313725484,
+    "sd": 0.09449475105899206,
+    "dims": 8448,
+    "null_mean": 0.3326274509803922,
+    "null_p95": 0.36284313725490197,
+    "p_value": 0.0
+  },
+  "random_flatten": {
+    "acc": 0.4509803921568627,
+    "sd": 0.07806285975448778,
+    "dims": 8448,
+    "null_mean": 0.3300588235294118,
+    "null_p95": 0.35789215686274517,
+    "p_value": 0.0
+  },
+  "classical": {
+    "acc": 0.40980392156862744,
+    "sd": 0.07542013555653689,
+    "dims": 132
+  }
+}

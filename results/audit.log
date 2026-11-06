@@ -1,0 +1,32 @@
+data: signal=(1020, 66, 100) subjects=17 classes=[340, 340, 340]
+MtReNIRS loaded: 1,226,368 params (0.7s)
+[A] MtReNIRS pretrained embeddings ...
+    flatten (1020, 8448), tmean (1020, 8448)
+[B] random-init control ...
+[C] classical features ...
+
+>>> mtreNIRS_flatten (8448 dims)
+    LOSO acc = 0.4696 +/- 0.0945
+    permutation null (100) ...
+    null mean=0.3320 p95=0.3639 p=0.0000
+
+>>> mtreNIRS_tmean (8448 dims)
+    LOSO acc = 0.4696 +/- 0.0945
+    permutation null (100) ...
+    null mean=0.3326 p95=0.3628 p=0.0000
+
+>>> random_flatten (8448 dims)
+    LOSO acc = 0.4510 +/- 0.0781
+    permutation null (100) ...
+    null mean=0.3301 p95=0.3579 p=0.0000
+
+>>> classical (132 dims)
+    LOSO acc = 0.4098 +/- 0.0754
+
+DONE in 496s -> audit/results_audit.json
+
+=== SUMMARY ===
+mtreNIRS_flatten       acc=0.4696 sd=0.0945 p=0.0000
+mtreNIRS_tmean         acc=0.4696 sd=0.0945 p=0.0000
+random_flatten         acc=0.4510 sd=0.0781 p=0.0000
+classical              acc=0.4098 sd=0.0754

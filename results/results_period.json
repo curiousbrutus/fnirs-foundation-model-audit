@@ -1,0 +1,360 @@
+{
+ "period_search": [
+  {
+   "session": "session_a",
+   "roi": "global",
+   "prep": "P1",
+   "n": 4985,
+   "r_max": 0.1333,
+   "best_period_s": 30.0,
+   "best_duty": 0.5,
+   "best_lag_s": 2.0,
+   "nulls": {
+    "smooth": {
+     "mean": 0.1559,
+     "p95": 0.1938,
+     "max": 0.2211,
+     "p": 0.8733,
+     "n": 150
+    },
+    "ar1": {
+     "mean": 0.0841,
+     "p95": 0.1222,
+     "max": 0.1564,
+     "p": 0.0417,
+     "n": 120
+    },
+    "phase": {
+     "mean": 0.1871,
+     "p95": 0.2329,
+     "max": 0.2777,
+     "p": 0.9583,
+     "n": 120
+    }
+   }
+  },
+  {
+   "session": "session_a",
+   "roi": "posterior",
+   "prep": "P1",
+   "n": 4985,
+   "r_max": 0.1674,
+   "best_period_s": 44.5,
+   "best_duty": 0.5,
+   "best_lag_s": 2.0,
+   "nulls": {
+    "smooth": {
+     "mean": 0.1493,
+     "p95": 0.1769,
+     "max": 0.202,
+     "p": 0.16,
+     "n": 150
+    },
+    "ar1": {
+     "mean": 0.0841,
+     "p95": 0.1222,
+     "max": 0.1564,
+     "p": 0.0,
+     "n": 120
+    },
+    "phase": {
+     "mean": 0.1804,
+     "p95": 0.2464,
+     "max": 0.2819,
+     "p": 0.5833,
+     "n": 120
+    }
+   }
+  },
+  {
+   "session": "session_b",
+   "roi": "global",
+   "prep": "P1",
+   "n": 4941,
+   "r_max": 0.1799,
+   "best_period_s": 21.5,
+   "best_duty": 0.5,
+   "best_lag_s": 2.5,
+   "nulls": {
+    "smooth": {
+     "mean": 0.1606,
+     "p95": 0.1905,
+     "max": 0.2279,
+     "p": 0.14,
+     "n": 150
+    },
+    "ar1": {
+     "mean": 0.0838,
+     "p95": 0.1267,
+     "max": 0.1615,
+     "p": 0.0,
+     "n": 120
+    },
+    "phase": {
+     "mean": 0.1776,
+     "p95": 0.2245,
+     "max": 0.2611,
+     "p": 0.45,
+     "n": 120
+    }
+   }
+  },
+  {
+   "session": "session_b",
+   "roi": "posterior",
+   "prep": "P1",
+   "n": 4941,
+   "r_max": 0.1845,
+   "best_period_s": 28.5,
+   "best_duty": 0.5,
+   "best_lag_s": 0.0,
+   "nulls": {
+    "smooth": {
+     "mean": 0.1796,
+     "p95": 0.2126,
+     "max": 0.246,
+     "p": 0.4133,
+     "n": 150
+    },
+    "ar1": {
+     "mean": 0.0838,
+     "p95": 0.1267,
+     "max": 0.1615,
+     "p": 0.0,
+     "n": 120
+    },
+    "phase": {
+     "mean": 0.1935,
+     "p95": 0.2378,
+     "max": 0.2699,
+     "p": 0.6,
+     "n": 120
+    }
+   }
+  },
+  {
+   "session": "pilot",
+   "roi": "global",
+   "prep": "P1",
+   "n": 4860,
+   "r_max": 0.164,
+   "best_period_s": 41.0,
+   "best_duty": 0.5,
+   "best_lag_s": 10.75,
+   "nulls": {
+    "smooth": {
+     "mean": 0.1902,
+     "p95": 0.2294,
+     "max": 0.268,
+     "p": 0.8733,
+     "n": 150
+    },
+    "ar1": {
+     "mean": 0.0842,
+     "p95": 0.1222,
+     "max": 0.1864,
+     "p": 0.0167,
+     "n": 120
+    },
+    "phase": {
+     "mean": 0.2252,
+     "p95": 0.2784,
+     "max": 0.3115,
+     "p": 0.9917,
+     "n": 120
+    }
+   }
+  },
+  {
+   "session": "pilot",
+   "roi": "posterior",
+   "prep": "P1",
+   "n": 4860,
+   "r_max": 0.186,
+   "best_period_s": 38.5,
+   "best_duty": 0.5,
+   "best_lag_s": 0.0,
+   "nulls": {
+    "smooth": {
+     "mean": 0.2059,
+     "p95": 0.2698,
+     "max": 0.3085,
+     "p": 0.6533,
+     "n": 150
+    },
+    "ar1": {
+     "mean": 0.0842,
+     "p95": 0.1222,
+     "max": 0.1864,
+     "p": 0.0083,
+     "n": 120
+    },
+    "phase": {
+     "mean": 0.2023,
+     "p95": 0.2574,
+     "max": 0.2888,
+     "p": 0.6833,
+     "n": 120
+    }
+   }
+  }
+ ],
+ "block_test": [
+  {
+   "session": "session_a",
+   "roi": "global",
+   "prep": "P1",
+   "r_max": 0.1549,
+   "best_q_s": 39.226,
+   "best_stim_s": 15.0,
+   "best_t0_s": 39.6,
+   "nulls": {
+    "phase": {
+     "mean": 0.1272,
+     "p95": 0.1789,
+     "max": 0.2413,
+     "p": 0.168,
+     "n": 250
+    },
+    "smooth": {
+     "mean": 0.1507,
+     "p95": 0.2087,
+     "max": 0.2571,
+     "p": 0.428,
+     "n": 250
+    }
+   },
+   "block_period_s": 392.26
+  },
+  {
+   "session": "session_a",
+   "roi": "posterior",
+   "prep": "P1",
+   "r_max": 0.1266,
+   "best_q_s": 39.226,
+   "best_stim_s": 30.0,
+   "best_t0_s": 24.96,
+   "nulls": {
+    "phase": {
+     "mean": 0.1376,
+     "p95": 0.1836,
+     "max": 0.2135,
+     "p": 0.656,
+     "n": 250
+    },
+    "smooth": {
+     "mean": 0.1468,
+     "p95": 0.2054,
+     "max": 0.2506,
+     "p": 0.688,
+     "n": 250
+    }
+   },
+   "block_period_s": 392.26
+  },
+  {
+   "session": "session_b",
+   "roi": "global",
+   "prep": "P1",
+   "r_max": 0.1896,
+   "best_q_s": 38.03,
+   "best_stim_s": 20.0,
+   "best_t0_s": 54.0,
+   "nulls": {
+    "phase": {
+     "mean": 0.1809,
+     "p95": 0.2343,
+     "max": 0.2716,
+     "p": 0.384,
+     "n": 250
+    },
+    "smooth": {
+     "mean": 0.1633,
+     "p95": 0.2125,
+     "max": 0.2362,
+     "p": 0.18,
+     "n": 250
+    }
+   },
+   "block_period_s": 392.26
+  },
+  {
+   "session": "session_b",
+   "roi": "posterior",
+   "prep": "P1",
+   "r_max": 0.1885,
+   "best_q_s": 38.03,
+   "best_stim_s": 15.0,
+   "best_t0_s": 49.68,
+   "nulls": {
+    "phase": {
+     "mean": 0.1764,
+     "p95": 0.2294,
+     "max": 0.2631,
+     "p": 0.36,
+     "n": 250
+    },
+    "smooth": {
+     "mean": 0.1682,
+     "p95": 0.2222,
+     "max": 0.2544,
+     "p": 0.24,
+     "n": 250
+    }
+   },
+   "block_period_s": 392.26
+  },
+  {
+   "session": "pilot",
+   "roi": "global",
+   "prep": "P1",
+   "r_max": 0.1738,
+   "best_q_s": 36.23,
+   "best_stim_s": 25.0,
+   "best_t0_s": 8.16,
+   "nulls": {
+    "phase": {
+     "mean": 0.2323,
+     "p95": 0.3155,
+     "max": 0.3587,
+     "p": 0.9,
+     "n": 250
+    },
+    "smooth": {
+     "mean": 0.1884,
+     "p95": 0.251,
+     "max": 0.2903,
+     "p": 0.612,
+     "n": 250
+    }
+   },
+   "block_period_s": 392.26
+  },
+  {
+   "session": "pilot",
+   "roi": "posterior",
+   "prep": "P1",
+   "r_max": 0.1588,
+   "best_q_s": 36.23,
+   "best_stim_s": 25.0,
+   "best_t0_s": 32.16,
+   "nulls": {
+    "phase": {
+     "mean": 0.1935,
+     "p95": 0.2612,
+     "max": 0.3079,
+     "p": 0.788,
+     "n": 250
+    },
+    "smooth": {
+     "mean": 0.1817,
+     "p95": 0.2466,
+     "max": 0.2995,
+     "p": 0.72,
+     "n": 250
+    }
+   },
+   "block_period_s": 392.26
+  }
+ ]
+}

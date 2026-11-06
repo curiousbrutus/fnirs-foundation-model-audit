@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+paper/main.aux
+paper/main.log
+paper/main.fls
+paper/main.fdb_latexmk
+paper/main.synctex.gz
+*.egg-info/
+.DS_Store
+third_party/
+*.npz.tmp

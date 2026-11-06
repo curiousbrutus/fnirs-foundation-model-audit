@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or the audit protocol, please cite the preprint and this repository."
+title: "The fNIRS Foundation Model Audit: Independent Evaluation of MtReNIRS and the Case of the Random Encoder"
+type: software
+authors:
+  - family-names: "Güven"
+    given-names: "Eyyüb"
+    orcid: "https://orcid.org/0009-0005-6017-8622"
+version: "1.0.0"
+date-released: 2026-11-06
+license: MIT
+repository-code: "https://github.com/curiousbrutus/fnirs-foundation-model-audit"
+keywords:
+  - fNIRS
+  - foundation models
+  - neuroimaging
+  - evaluation
+  - reproducibility

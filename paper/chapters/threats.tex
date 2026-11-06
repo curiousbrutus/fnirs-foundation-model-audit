@@ -1,0 +1,50 @@
+\section{Limitations and threats to validity}
+\label{sec:threats}
+
+\paragraph{Statistical power.} Seventeen folds give limited power. The 95\,\% confidence interval
+on the central contrast (pretrained versus random-init) spans roughly $\pm 3$ pp, so an advantage
+smaller than that cannot be resolved. Our result is a failure to establish an advantage, not
+evidence of its absence. Increasing folds requires more participants, not more seeds.
+
+\paragraph{One dataset, one task, one model.} We audit MtReNIRS on a three-class auditory
+block-design dataset. We did not evaluate GeoNIRS, nor a visual or affective paradigm. The
+auditory paradigm may be unusually favourable to systemic signal, which would make the
+short-separation result paradigm-specific. Generalisation across datasets and tasks is the
+obvious next experiment and we do not claim it here.
+
+\paragraph{The random-encoder control is a lower bound.} Our control re-initialises each module
+with its own default initialisation and runs ten seeds. A stronger control would tune the random
+encoder's readout as carefully as the pretrained one, which could raise it further; a weaker
+control (single seed) could understate it. We report the seed distribution so the reader can
+judge.
+
+\paragraph{Probe hyperparameters are fixed.} All arms use $C=1$, PCA-64 and one solver setting.
+We did not perform nested hyperparameter selection, because doing so identically for twelve arms
+was not affordable in our compute budget. A tuned probe could change the ranking between arms
+whose accuracies differ by a few points. Total dimensionality is matched, which removes the most
+obvious artefact but not this one.
+
+\paragraph{Preprocessing choices are defaults.} The modified Beer--Lambert constants, the
+differential pathlength factor of 6.0, the 0.01--0.2~Hz band and the run-mean intensity reference
+are defensible defaults, not optimised values. Because epochs are z-scored per participant and
+channel, the short-separation ablation acts on waveform shape rather than absolute amplitude;
+a pipeline that preserved amplitude might show a different pattern.
+
+\paragraph{Contamination accounting is by published list.} We determine that the evaluation
+dataset is absent from the pretraining corpus from the twelve dataset names published with the
+model. If the dataset entered pretraining under an unrecognised name, the pretrained arm would
+be advantaged, so this uncertainty works in the model's favour, not against it.
+
+\paragraph{Inference-only audit.} We evaluate frozen embeddings and a linear probe; we do not
+fine-tune the encoder. Fine-tuning could change the picture substantially and is a natural
+follow-up. We also do not claim any result about the model's published benchmark numbers, which
+we did not attempt to reproduce exactly, because our preprocessing and probe differ.
+
+\paragraph{Compute and numerical detail.} All inference and probes ran on a laptop CPU. One
+earlier run of the stacking ablation used a probe that produced convergence warnings; we re-ran
+it under the final protocol and report only the re-run (the qualitative conclusion was
+unchanged). One earlier run of the short-separation variant silently failed to change the data
+because the short channels had been removed before regression; the current pipeline asserts that
+the cleaning step changes the input, and we verified the effect numerically (correlation
+$0.434 \to 0.000$). We mention both because they are ordinary failure modes of this kind of
+pipeline and are worth guarding against.

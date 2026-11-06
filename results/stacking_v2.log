@@ -1,0 +1,10 @@
+pretrained      0.4686 +/- 0.0955
+classical       0.4098 +/- 0.0754
+stack_pre_cls   0.4216 +/- 0.0626
+random0         0.4480 +/- 0.0887
+stack_rnd_cls   0.4206 +/- 0.0829
+
+stack - pretrained            -4.71 pp p=0.0417 CI=[-8.73,-0.59]
+stack - classical             +1.18 pp p=0.5674 CI=[-2.75,+4.80]
+stack_rnd - random0           -2.75 pp p=0.0226 CI=[-4.71,-0.59]
+saved audit/results_stacking_v2.json

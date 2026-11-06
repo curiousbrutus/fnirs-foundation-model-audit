@@ -1,0 +1,66 @@
+\section{Background}
+\label{sec:background}
+
+\subsection{fNIRS decoding and its constraints}
+fNIRS records changes in oxygenated (HbO) and deoxygenated (HbR) haemoglobin concentration from
+near-infrared light passing between sources and detectors on the scalp. The signal is
+haemodynamic, slow (peak responses 5--7 s after onset), and contaminated by superficial
+physiology---cardiac pulsation, respiration, and Mayer waves---which is measured directly by
+\emph{short-separation channels}, i.e.\ source--detector pairs with separations of roughly
+8--15 mm that sample scalp and skull rather than cortex.
+
+Two constraints dominate decoding. First, spatial resolution: a recent analysis of the resolution
+required for image reconstruction reports that at 2 cm---the continuous-wave fNIRS regime---
+300-way retrieval falls to about 20\,\%, against 93\,\% for full-resolution fMRI
+\citep{adamic2024resolution}. Second, probe density: single-trial decoding accuracy improves
+systematically with optode density \citep{fischer2026density}. Sparse montages such as the one we
+audit here (33 source--detector pairs) sit at the low end of that curve.
+
+\subsection{Foundation models across neuroimaging}
+Pretrained representation models now exist for several modalities. For EEG: LaBraM
+\citep{bi2024labram}, CBraMod \citep{wang2025cbramod}, EEGPT \citep{wang2024eegpt}, and unified
+EEG/MEG models such as BrainOmni \citep{brainomni2025}. For fNIRS, MtReNIRS
+\citep{chae2026mtrenirs} is a 1.23M-parameter spatial--temporal transformer pretrained on twelve
+public datasets (1{,}387 runs, 203{,}420 ten-second windows, exceeding 567 hours) using one
+32\,GB V100, producing a 128-dimensional embedding per channel and 10-second window and accepting
+arbitrary montages through standard 10-05 channel coordinates. GeoNIRS \citep{geonirs2026} takes
+a geometry-aware approach, and a curated 67-dataset corpus \citep{sposso2026corpus} now supports
+further pretraining.
+
+A parallel line of work has developed architectures tailored to fNIRS physiology and montage
+geometry rather than adapting generic backbones: transformer and general vision frameworks for
+fNIRS classification \citep{wang2022transformer,wang2022vision}, representations that model the
+delayed haemodynamic response explicitly \citep{wang2023rethinking}, a unified framework informed
+by local brain activation patterns \citep{wang2026unified}, and a domain-knowledge-fused
+state-space model \citep{wang2026dkssm}. That work establishes that architecture and
+physiological inductive bias matter for fNIRS decoding. It is also the premise our random-encoder
+control tests: if architectural inductive bias is what carries the performance, a randomly
+initialised encoder of the same architecture should recover much of it---and, in our results,
+it does.
+
+\subsection{The evaluation gap}
+Evaluation practice has not kept pace. For EEG, independent benchmarks now evaluate dozens of
+models across many tasks and datasets. For fNIRS we could find no independent benchmark: the
+published evaluations of both released models are by their own authors, and much of the
+evaluation data overlaps the pretraining corpora, which makes apparent transfer gains difficult
+to attribute. In the EEG literature the analogous concern is already empirically grounded:
+large-scale pretraining has been reported to yield no consistent advantage over compact
+convolutional baselines on some downstream tasks, and the benefit of pretraining has been found
+to depend on corpus scale and on the specific benchmark.
+
+The control we adopt here is standard elsewhere but absent from fNIRS foundation-model papers.
+In vision and language, a randomly initialised model of the same architecture is the accepted
+baseline that separates \emph{architecture} from \emph{pretraining}; the idea has an established
+lineage in the random-features literature \citep{rahimi2007random}, where fixed random
+projections are known to be surprisingly competitive for many tasks. If a pretrained encoder
+cannot beat a random one, the claim that pretraining is what produces the performance is
+unsupported regardless of how good the absolute accuracy is.
+
+\subsection{Preprocessing as a confound}
+Physiological noise regression is widely recommended: \citet{fischer2026density} integrate
+short-separation regression into cross-validation and report gains of roughly 4\,\% within-subject
+and more than 10 percentage points in cross-dataset transfer, and argue that image-space
+(parcellated) representations further improve generalisation. Yet the same literature warns that
+decoding results can be inflated by non-neural structure: \citet{rybar2024cue} show that cue
+presentation windows grossly overestimate semantic BCI performance. Our short-separation ablation
+(Section~\ref{sec:results_wss}) speaks directly to this tension.

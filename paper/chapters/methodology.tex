@@ -1,0 +1,110 @@
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Dataset}
+We use the passive auditory fNIRS dataset of \citet{luke2021passive}, distributed as BIDS with
+SNIRF recordings. It contains 17 participants, each viewing a block-design protocol with three
+conditions (Control, Speech, Noise), 20 events per condition per participant (60 events each),
+5-second stimulus duration and pseudo-randomised inter-stimulus intervals. Raw data are
+continuous-wave amplitudes at two wavelengths (760 and 850 nm), recorded at
+$5.2083$~Hz with 66 measurement channels over 12 sources and 20 detectors.
+
+The montage is identical across participants: 33 source--detector pairs, of which
+\textbf{8 are short-separation channels} (7.6--8.4 mm) and \textbf{25 are long channels}
+(30.4--41.9 mm). This is important for Section~\ref{sec:results_wss}.
+
+\paragraph{Why this dataset.} MtReNIRS's twelve pretraining datasets are published in its
+repository as aligned-montage summaries: Ajra2026, Chen2023, Defenderfer2019, Ferron2019,
+Gao2023, Hudak2017, Li2020, Morgan2026, Shin2017, Spap\'e2023 (NEMO \citep{spape2024nemo}),
+Sudan2026-cocktail-visual, and Xiafei2024-driving. The present dataset is not among them, so it
+is a clean held-out test set. By contrast NEMO---the most attractive public image-viewing fNIRS
+dataset---\emph{is} in the pretraining corpus and is therefore unsuitable as a headline test.
+
+\subsection{Preprocessing}
+\label{sec:preproc}
+Raw intensities were converted to optical density and then to HbO/HbR concentration changes using
+the modified Beer--Lambert law with tabulated extinction coefficients, a differential pathlength
+factor of 6.0, and channel-wise source--detector distances computed from the three-dimensional
+optode coordinates. Signals were linearly detrended and band-pass filtered at 0.01--0.2~Hz
+(third-order Butterworth, zero-phase). Each event contributed a 10-second epoch starting at
+stimulus onset, resampled to 10~Hz (100 samples, the MtReNIRS window contract) and z-scored per
+epoch and channel.
+
+Channel positions for the model were obtained by averaging each source--detector pair and
+projecting the midpoints to standard 10-05 coordinates using the model's alignment toolkit
+(\textsc{MtSi1005}); all 66 measurement channels mapped to valid slots, with a median projection
+distance of 13.2~mm.
+
+\subsection{Model and arms}
+MtReNIRS was loaded from its bundled MIT-licensed checkpoint (\texttt{mtrenirs\_10s.pt},
+1{,}226{,}368 encoder parameters) and run in inference mode on CPU. We compare four arms under
+one protocol:
+\begin{description}
+  \item[Pretrained] frozen MtReNIRS embeddings, flatten-pooled (66 channels $\times$ 128
+        dimensions).
+  \item[Random-init] the same architecture with all encoder parameters re-initialised to their
+        default initialisation, repeated over \textbf{ten seeds}; each seed produces one arm.
+  \item[Classical] per-channel mean and linear slope over the epoch (132 features).
+  \item[Stack] pretrained and classical features concatenated after block-wise PCA.
+\end{description}
+
+\subsection{Probe and statistics}
+Every arm passes through an identical head. For each of the 17 leave-one-subject-out folds we
+standardise features on the training participants only, reduce dimensionality with PCA fitted on
+training data only, re-standardise, and fit multinomial logistic regression ($C=1$, 3{,}000
+iterations; no fold failed to converge). Total dimensionality is held constant at 64 across all
+arms, so a two-block stack receives PCA-32 per block and cannot win merely by having more
+features.
+
+We report mean $\pm$ standard deviation of fold accuracy, paired $t$-tests and Wilcoxon
+signed-rank tests across folds, and bootstrap 95\,\% confidence intervals over folds.
+Significance of the embedding arms is further calibrated against permutation nulls: 100 label
+permutations, re-using the per-fold PCA (which is unsupervised, so no information from the test
+labels enters). Chance is 33.3\,\%.
+
+\subsection{Preprocessing ablation}
+\label{sec:methods_ablation}
+The main experiment (Section~\ref{sec:results_main}) includes all 33 pairs, i.e.\ short-separation
+channels enter the model as if they were cortical channels. To separate the contributions we
+compare three variants:
+\begin{itemize}
+  \item \textbf{raw}: all 33 pairs, no regression;
+  \item \textbf{long}: the 25 long pairs only, short channels excluded from the model input;
+  \item \textbf{wss}: the 25 long pairs after regressing out the eight short-separation signals
+        from every long channel, per participant, on the continuous signal before epoching
+        (ordinary least squares with all eight short channels and an intercept; the fitted
+        short-channel component is subtracted). We verified that this removes the shared
+        variance: the mean absolute correlation between long channels and the mean short-channel
+        signal falls from 0.434 to 0.000.
+\end{itemize}
+Regression is performed on continuous data, never per epoch, so no epoch-level information enters
+the cleaning step.
+
+\subsection{Companion detectability calculator}
+\label{sec:methods_tool}
+While attempting to analyse a separate trigger-free pilot recording, we built a small tool that
+we believe is independently useful and include here because it is the basis on which we decided
+\emph{not} to make decoding claims about that recording. The pilot data are informal,
+self-collected exploratory recordings made by the author without a formal ethics protocol; they
+are not distributed, they are referred to only by neutral session codes (A and B), and they
+contribute no result beyond the illustration in \S\ref{sec:results_tool}.
+
+The tool injects synthetic haemodynamic responses of specified amplitude at a candidate design's
+event onsets into a recording of the same participant's continuous signal, then runs the same
+onset-recovery or decoding pipeline used on real data. Sweeping injected amplitude yields a
+\emph{detectability curve}: the probability that a response of a given size would have been
+detected at the sample size, montage and noise level actually available. This design logic
+follows the synthetic-HRF validation component of \citet{fischer2026density}, implemented in
+Cedalion; our addition is the pre-study power framing and the null calibration described next.
+
+Calibration requires care. A statistic that maximises over candidate onsets cannot be calibrated
+by circularly shifting the data, because shifting the data is equivalent to shifting the template
+family: the null maximum then equals the observed maximum and the test has no power. We therefore
+use phase-randomised surrogates, which preserve the power spectrum while destroying the
+phase relationship to the design, and we report this explicitly because the failure mode is easy
+to reproduce.
+
+\subsection{Reproduction}
+All code, fixed protocols and result files are released (\S\ref{sec:availability}).
+Preprocessing, alignment, evaluation and figure generation are separate scripts; every number in
+this paper can be regenerated from the raw BIDS dataset.

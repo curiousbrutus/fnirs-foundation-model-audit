@@ -1,0 +1,149 @@
+{
+ "A_cp_x0.5|session_a-session_b": {
+  "overlap": 0.625,
+  "shift": -35.0,
+  "null_mean": 0.451,
+  "null_p95": 0.512,
+  "p": 0.0
+ },
+ "A_cp_x0.5|session_a-init": {
+  "overlap": 0.588,
+  "shift": 21.0,
+  "null_mean": 0.455,
+  "null_p95": 0.512,
+  "p": 0.0
+ },
+ "A_cp_x0.5|session_b-init": {
+  "overlap": 0.625,
+  "shift": 6.0,
+  "null_mean": 0.454,
+  "null_p95": 0.501,
+  "p": 0.0
+ },
+ "A_cp_x1|session_a-session_b": {
+  "overlap": 0.568,
+  "shift": -58.0,
+  "null_mean": 0.454,
+  "null_p95": 0.501,
+  "p": 0.0
+ },
+ "A_cp_x1|session_a-init": {
+  "overlap": 0.554,
+  "shift": -33.0,
+  "null_mean": 0.454,
+  "null_p95": 0.514,
+  "p": 0.015
+ },
+ "A_cp_x1|session_b-init": {
+  "overlap": 0.65,
+  "shift": 36.0,
+  "null_mean": 0.451,
+  "null_p95": 0.512,
+  "p": 0.0
+ },
+ "A_cp_x2|session_a-session_b": {
+  "overlap": 0.625,
+  "shift": 12.0,
+  "null_mean": 0.488,
+  "null_p95": 0.562,
+  "p": 0.045
+ },
+ "A_cp_x2|session_a-init": {
+  "overlap": 0.562,
+  "shift": -2.0,
+  "null_mean": 0.29,
+  "null_p95": 0.375,
+  "p": 0.0
+ },
+ "A_cp_x2|session_b-init": {
+  "overlap": 0.208,
+  "shift": -25.0,
+  "null_mean": 0.202,
+  "null_p95": 0.245,
+  "p": 0.52
+ },
+ "A_cp_x4|session_a-session_b": {
+  "overlap": 0.25,
+  "shift": -3.0,
+  "null_mean": 0.201,
+  "null_p95": 0.256,
+  "p": 0.565
+ },
+ "A_cp_x4|session_a-init": {
+  "overlap": 0.375,
+  "shift": 57.0,
+  "null_mean": 0.189,
+  "null_p95": 0.25,
+  "p": 0.04
+ },
+ "A_cp_x4|session_b-init": {
+  "overlap": 0.571,
+  "shift": 31.0,
+  "null_mean": 0.214,
+  "null_p95": 0.286,
+  "p": 0.005
+ },
+ "B_hmm|session_a-session_b": {
+  "overlap": 0.444,
+  "shift": -33.0,
+  "null_mean": 0.413,
+  "null_p95": 0.556,
+  "p": 0.605
+ },
+ "B_hmm|session_a-init": {
+  "overlap": 0.333,
+  "shift": -6.0,
+  "null_mean": 0.363,
+  "null_p95": 0.556,
+  "p": 0.875
+ },
+ "B_hmm|session_b-init": {
+  "overlap": 0.321,
+  "shift": -27.0,
+  "null_mean": 0.251,
+  "null_p95": 0.321,
+  "p": 0.1
+ },
+ "C_var_z2|session_a-session_b": {
+  "overlap": 0.2,
+  "shift": -58.0,
+  "null_mean": 0.253,
+  "null_p95": 0.4,
+  "p": 0.985
+ },
+ "C_var_z2|session_a-init": {
+  "overlap": 0.1,
+  "shift": -41.0,
+  "null_mean": 0.225,
+  "null_p95": 0.3,
+  "p": 1.0
+ },
+ "C_var_z2|session_b-init": {
+  "overlap": 0.25,
+  "shift": -59.0,
+  "null_mean": 0.205,
+  "null_p95": 0.25,
+  "p": 0.465
+ },
+ "C_var_z3|session_a-session_b": {
+  "overlap": 0.25,
+  "shift": 7.0,
+  "null_mean": 0.25,
+  "null_p95": 0.5,
+  "p": 0.875
+ },
+ "C_var_z3|session_a-init": {
+  "overlap": 0,
+  "shift": 0.0,
+  "null_mean": 0.166,
+  "null_p95": 0.25,
+  "p": 1.0
+ },
+ "C_var_z3|session_b-init": {
+  "overlap": 0.2,
+  "shift": -16.0,
+  "null_mean": 0.131,
+  "null_p95": 0.2,
+  "p": 0.635
+ }
+}

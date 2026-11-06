@@ -1,0 +1,57 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What a random encoder tells us}
+The central practical proposal of this paper is methodological: fNIRS foundation-model papers
+should report a randomly initialised encoder of the same architecture as a baseline. The control
+is cheap---ten seeds cost minutes on a laptop CPU---and it changes the interpretation of a
+result entirely. In our data the absolute accuracy of MtReNIRS ($0.469$) looks like a
+respectable result for three-class fNIRS decoding on a sparse montage. Against a random encoder
+($0.448 \pm 0.010$) it is a $2$-pp difference that 17 folds cannot resolve.
+
+This does not mean the model is without value. It means the \emph{claim} that pretraining is
+responsible for the performance is not supported by this experiment. Distinguishing the two
+requires either much more statistical power, or datasets on which transfer is larger. Neither
+is available to us here, and we suspect neither is available in the current fNIRS literature.
+
+The finding also explains why the paper's own reported gains might be small and heterogeneous:
+the model authors report cross-subject improvements of roughly $+5.0$, $+4.3$ and $+1.2$ pp on
+different datasets, none individually significant. Our independent estimate on a clean dataset
+is in the same range, which is at least consistent.
+
+\subsection{Architecture, not pretraining}
+The significant contrast in our results is the transformer representation against hand-crafted
+features, and it survives with a random encoder. This is the random-features phenomenon
+\citep{rahimi2007random} reappearing in a new modality: a sufficiently expressive fixed
+representation can be competitive with a learned one when the downstream task is small. For
+practice, this suggests that a well-designed encoder architecture may deliver most of the value
+that foundation-model framing promises, at a fraction of the data-curation cost---and that the
+field's claims should be framed accordingly.
+
+\subsection{Systemic signal and the cost of cleaning}
+Our short-separation ablation is the result we least expected. Physiological regression is
+recommended, is well motivated, and helps elsewhere \citep{fischer2026density}. Here it reduced
+accuracy, and---more tellingly---it removed precisely the part of the signal on which the
+embedding arms were outperforming classical features. The most plausible account is that the
+auditory conditions differ in global physiology (arousal, attention, global haemodynamics) in
+addition to local cortical responses, and short channels capture that global component.
+
+This has two implications. First, studies that use short-separation regression should report
+decoding performance \emph{with and without} it; a large drop is informative about where the
+decodable variance lives. Second, and more broadly, it reinforces the case for interpreting
+fNIRS decoding results alongside explicit tests of non-neural confounds.
+
+\subsection{Integration must be learned, not concatenated}
+Our stacking result is a negative one, and we report it because the temptation to combine
+representations is strong. At matched dimensionality, concatenation degraded performance and was
+statistically indistinguishable from the weaker component alone. The redundancy between
+hand-crafted features and transformer embeddings is high; adding a representation is not the same
+as adding information. A combined model would need a learned routing mechanism, and it should be
+evaluated against the same random-encoder control.
+
+\subsection{Implications for evaluation practice}
+We suggest three concrete practices for fNIRS foundation-model papers: (i) a random-encoder
+baseline with multiple seeds; (ii) explicit contamination accounting---which evaluation datasets
+overlap the pretraining corpus; (iii) reporting of preprocessing sensitivity, in particular
+short-separation regression, because it can change both absolute accuracy and the ranking of
+methods. Each is inexpensive and each materially changes what a reported number means.

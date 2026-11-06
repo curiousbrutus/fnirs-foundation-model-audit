@@ -1,0 +1,76 @@
+
+======================================================================
+VARIANT: raw
+  signal (1020, 66, 100), 17 subjects
+  pretrained             0.4686 +/- 0.0955  (non-converged 0/17)
+  classical              0.4098 +/- 0.0754  (non-converged 0/17)
+  random_seed0           0.4480 +/- 0.0887  (non-converged 0/17)
+  random_seed1           0.4412 +/- 0.0769  (non-converged 0/17)
+  random_seed2           0.4471 +/- 0.0797  (non-converged 0/17)
+  random_seed3           0.4696 +/- 0.0867  (non-converged 0/17)
+  random_seed4           0.4441 +/- 0.1002  (non-converged 0/17)
+  random_seed5           0.4608 +/- 0.0867  (non-converged 0/17)
+  random_seed6           0.4451 +/- 0.0900  (non-converged 0/17)
+  random_seed7           0.4549 +/- 0.0754  (non-converged 0/17)
+  random_seed8           0.4363 +/- 0.0897  (non-converged 0/17)
+  random_seed9           0.4353 +/- 0.0880  (non-converged 0/17)
+  seed distribution: 0.4482 +/- 0.0102 [0.4353,0.4696]
+  paired tests:
+  pretrained - mean(10 seeds)           +2.04 pp  p=0.1879  wilcoxon=0.2247  CI=[-0.82,+4.86]
+  pretrained - classical                +5.88 pp  p=0.0137  wilcoxon=0.0198  CI=[+1.86,+10.00]
+  mean(10 seeds) - classical            +3.84 pp  p=0.0388  wilcoxon=0.0758  CI=[+0.64,+7.09]
+
+======================================================================
+VARIANT: long
+  signal (1020, 50, 100), 17 subjects
+  pretrained             0.4500 +/- 0.0597  (non-converged 0/17)
+  classical              0.3931 +/- 0.0672  (non-converged 0/17)
+  random_seed0           0.4480 +/- 0.0738  (non-converged 0/17)
+  random_seed1           0.4402 +/- 0.0684  (non-converged 0/17)
+  random_seed2           0.4422 +/- 0.0637  (non-converged 0/17)
+  random_seed3           0.4353 +/- 0.0679  (non-converged 0/17)
+  random_seed4           0.4569 +/- 0.0652  (non-converged 0/17)
+  random_seed5           0.4539 +/- 0.0596  (non-converged 0/17)
+  random_seed6           0.4402 +/- 0.0611  (non-converged 0/17)
+  random_seed7           0.4431 +/- 0.0662  (non-converged 0/17)
+  random_seed8           0.4422 +/- 0.0672  (non-converged 0/17)
+  random_seed9           0.4186 +/- 0.0773  (non-converged 0/17)
+  seed distribution: 0.4421 +/- 0.0100 [0.4186,0.4569]
+  paired tests:
+  pretrained - mean(10 seeds)           +0.79 pp  p=0.4128  wilcoxon=0.5477  CI=[-0.98,+2.60]
+  pretrained - classical                +5.69 pp  p=0.0055  wilcoxon=0.0098  CI=[+2.45,+9.02]
+  mean(10 seeds) - classical            +4.89 pp  p=0.0027  wilcoxon=0.0046  CI=[+2.39,+7.58]
+
+======================================================================
+VARIANT: wss
+  signal (1020, 50, 100), 17 subjects
+  pretrained             0.4500 +/- 0.0597  (non-converged 0/17)
+  classical              0.3931 +/- 0.0672  (non-converged 0/17)
+  random_seed0           0.4480 +/- 0.0738  (non-converged 0/17)
+  random_seed1           0.4402 +/- 0.0684  (non-converged 0/17)
+  random_seed2           0.4422 +/- 0.0637  (non-converged 0/17)
+  random_seed3           0.4353 +/- 0.0679  (non-converged 0/17)
+  random_seed4           0.4569 +/- 0.0652  (non-converged 0/17)
+  random_seed5           0.4539 +/- 0.0596  (non-converged 0/17)
+  random_seed6           0.4402 +/- 0.0611  (non-converged 0/17)
+  random_seed7           0.4431 +/- 0.0662  (non-converged 0/17)
+  random_seed8           0.4422 +/- 0.0672  (non-converged 0/17)
+  random_seed9           0.4186 +/- 0.0773  (non-converged 0/17)
+  seed distribution: 0.4421 +/- 0.0100 [0.4186,0.4569]
+  paired tests:
+  pretrained - mean(10 seeds)           +0.79 pp  p=0.4128  wilcoxon=0.5477  CI=[-0.98,+2.60]
+  pretrained - classical                +5.69 pp  p=0.0055  wilcoxon=0.0098  CI=[+2.45,+9.02]
+  mean(10 seeds) - classical            +4.89 pp  p=0.0027  wilcoxon=0.0046  CI=[+2.39,+7.58]
+
+======================================================================
+CROSS-VARIANT (same folds, same labels)
+  pretrained: raw - long                +1.86 pp  p=0.3180  wilcoxon=0.3650  CI=[-1.57,+5.29]
+  classical: raw - long                 +1.67 pp  p=0.1387  wilcoxon=0.1765  CI=[-0.39,+3.63]
+  pretrained: raw - wss                 +1.86 pp  p=0.3180  wilcoxon=0.3650  CI=[-1.57,+5.29]
+  classical: raw - wss                  +1.67 pp  p=0.1387  wilcoxon=0.1765  CI=[-0.39,+3.63]
+/home/jobbe/.local/lib/python3.12/site-packages/scipy/stats/_wilcoxon.py:192: RuntimeWarning: invalid value encountered in scalar divide
+  z = (r_plus - mn) / se
+  pretrained: long - wss                +0.00 pp  p=nan  wilcoxon=nan  CI=[+0.00,+0.00]
+  classical: long - wss                 +0.00 pp  p=nan  wilcoxon=nan  CI=[+0.00,+0.00]
+
+DONE 1180s -> audit/results_audit3.json

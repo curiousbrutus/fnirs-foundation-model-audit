@@ -1,0 +1,48 @@
+% ============================================================
+% arXiv preprint — plain article class.
+% Compile: latexmk -pdf main.tex
+% ============================================================
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+% Coined names must be breakable, otherwise they overflow the justification.
+\hyphenation{MtRe-NIRS Geo-NIRS NIRS-tool}
+\setlength{\emergencystretch}{2em}
+
+\title{The fNIRS Foundation Model Audit:\\
+Independent Evaluation of MtReNIRS and the Case of the Random Encoder}
+
+\author{%
+  Eyy\"ub G\"uven\thanks{ORCID 0009-0005-6017-8622.
+  \texttt{[TODO: add affiliation, co-authors and CRediT roles before submission.]}}
+}
+
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\input{chapters/abstract}
+
+\input{chapters/introduction}
+\input{chapters/background}
+\input{chapters/methodology}
+\input{chapters/evaluation}
+\input{chapters/discussion}
+\input{chapters/threats}
+\input{chapters/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

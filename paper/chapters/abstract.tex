@@ -1,0 +1,18 @@
+Foundation models have recently entered functional near-infrared spectroscopy (fNIRS).
+The most prominent of these, MtReNIRS, was released in October 2026 with reported cross-subject
+transfer gains on several public datasets. To our knowledge, however, no released fNIRS
+foundation model has yet been evaluated by a party other than its authors. We report an independent audit of MtReNIRS on a held-out dataset
+that is absent from its twelve-dataset pretraining corpus (17 participants, 1{,}020 epochs,
+three auditory conditions). Using strict leave-one-subject-out evaluation with permutation
+nulls, a frozen pretrained encoder reaches $0.469 \pm 0.095$ three-class accuracy (chance
+$0.333$). A randomly initialised encoder of the same architecture, averaged over ten seeds,
+reaches $0.448 \pm 0.010$; the pretraining advantage is $+2.04$ percentage points and is not
+statistically significant ($p = 0.19$, 95\,\% CI $[-0.8, +4.9]$ pp). The architecture does
+significantly outperform hand-crafted features ($+5.88$ pp, $p = 0.014$). Short-separation
+regression, currently recommended for fNIRS decoding, reduced accuracy by $4.5$ pp and
+eliminated the architecture advantage, indicating that part of the decodable signal is
+systemic. Naive feature stacking of encoder and hand-crafted representations significantly
+degraded performance ($-4.71$ pp, $p = 0.042$). We argue that \emph{randomly initialised
+encoders of the same architecture} be adopted as a mandatory baseline in fNIRS foundation-model
+evaluation, and we release our harness together with a companion detectability calculator for
+study design.
